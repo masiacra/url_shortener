@@ -10,7 +10,7 @@ shortUrl VARCHAR(100) NOT NULL
 
 GRANT SELECT, INSERT, UPDATE ON url_shortener_DB.urls TO 'admin_cock'@'localhost';
 
-Вход: mysql -u url_shortener -p
+Вход: mysql -u admin_cock -p
 
 //Вставляем значения
 INSERT INTO urls VALUES ('https://yandex.ru', 'aaa0000');
