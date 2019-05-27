@@ -16,7 +16,7 @@ const staticFilesHandler = require('./lib/staticFilesHandler');
 
 const server = http.createServer( (req, res) => {
 	const npath = url.parse(req.url).pathname.replace(/^\/+|\/+$/g, '');
-	console.log(npath);
+	console.log(npath, req.method);
 	//Проверка на нулевой байт
 	if (~npath.indexOf('\0')) {
 		res.statusCode = 400;
