@@ -66,7 +66,8 @@ const record = new class {
 	publish(data) {
 		if (typeof data === 'object') {
 			this.elem.innerHTML = `Long url: ${data.longUrl}, 
-			short url : <a href="http://localhost:3000/${data.shortUrl}">
+			short url : <a href="http://localhost:3000/${data.shortUrl}"
+			target="_blank">
 			localhost:3000/${data.shortUrl}</a>`;
 		} else {
 			this.elem.innerHTML = data;
