@@ -31,9 +31,10 @@ const form = new class {
 					elem.classList.remove('alert');
 				}
 				inp.value = '';
+				const data = JSON.parse(this.responseText);
 				let evt = new CustomEvent('success', {
 					bubbles: true,
-					detail: longUrl
+					detail: data
 				});
 				elem.dispatchEvent(evt);
 			} else {
@@ -63,7 +64,14 @@ const record = new class {
 		this.elem = elem;
 	}
 	publish(data) {
-		this.elem.innerHTML = data;
+		if (typeof data === 'object') {
+			this.elem.innerHTML = `Long url: ${data.longUrl}, 
+			short url : <a href="http://localhost:3000/${data.shortUrl}">
+			localhost:3000/${data.shortUrl}</a>`;
+		} else {
+			this.elem.innerHTML = data;
+		}
+
 	}
 }(document.body.getElementsByClassName('result')[0]);
 
