@@ -3,6 +3,7 @@
 <head>
 	<title>URL shortener</title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
 	<link href="custom.css" rel="stylesheet">
 	
 </head>
@@ -11,15 +12,18 @@
 	<form action="/" method="POST">
 		<label>Enter your URL:</label>
 		<input type="text" name="longUrl" 
-		placeholder="Shorten your link">
+		placeholder="Shorten your link" class="longUrl">
 
-		<button>submit</button>
+		<button class="button">submit</button>
+		<div class="warning hidden">Attention, You entered incorrect URL</div>
 	</form>
-	
+
 	<div class="result">
-		
+		<div>facebook.com</div>
+		<div><a href="#" id="shortUrl">http://localhost:3000/aaa0007</a></div>
+		<div><button class="button">copy</button></div>
 	</div>
-	
 	<script src="script.js"></script>
+
 </body>
 </html>

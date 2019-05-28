@@ -129,15 +129,84 @@ footer a {
 }
 /* пользовательские стили  */
 
+/* стили для мобильных устройств и базовые стили для всех устройств  */
+body {
+  /* свойства тела страницы */
+  margin: 0 auto;
+  max-width: 300px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(255,222,213);
+}
 h1 {
-	color: red;
+	font-family: "Marker Felt", "Copperplate Gothic Light", serif;
+	color: #26273B;
+	font-size: 26px;
+	text-align: center;
+}
+
+form {
+	border: 2px solid rgb(104,78,91);
+	border-radius: 10px;
+	padding: 10px;
+	font-size: 18px;
+	padding-bottom: 40px;
+}
+
+.longUrl {
+	width: 280px;
+	
+}
+
+.button {
+	padding: 0 10px;
+	color: rgb(93,102,131);
+	background-color: #E6E6FA;
+	border-radius: 5px;
+	box-shadow: 0 0 4px white;
+}
+
+.warning {
+	color: #1A1A1A;
+	border: 0.5px solid black;
+	background-color: #FF5E00;
+	border-radius: 10px;
+	display: block;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+.hidden {
+	opacity: 1;
+}
+
+.result {
+	padding: 10px;
+	border: 2px solid rgb(104,78,91);
+	border-radius: 10px;
+	display: flex column-wrap;
+}
+
+.result div {
+	flex: 1;
+	padding: 10px 0;
+	text-align: center;
+}
+
+/* только для устройств со средним размером экрана */
+@media (min-width: 481px) and (max-width:768px) {
+  body {
+    /* только для планшетов */
+  }
+
+}
+
+/* только для устройств с крупным размером экрана */
+@media (min-width:769px) {
+  body {
+    /* только для компьютеров */
+  }
+
 }
 
 
-.alert:after {
-	content: 'Incorrect URL';
-	color: white;
-	border: 2px solid red;
-	background-color: red;
-	border-radius: 10%;
-}
+

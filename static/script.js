@@ -26,10 +26,11 @@ const form = new class {
 		xhr.send(JSON.stringify({ longUrl }));
 		xhr.onload = function(){ 
 			if (this.status === 200) {
-				console.log(this.responseText);
-				if (elem.classList.contains('alert')) {
-					elem.classList.remove('alert');
+				const warningSyst = elem.getElementsByClassName('warning')[0];
+				if (!warningSyst.classList.contains('hidden')) {
+					warningSyst.classList.add('hidden');
 				}
+				console.log(this.responseText);
 				inp.value = '';
 				const data = JSON.parse(this.responseText);
 				let evt = new CustomEvent('success', {
@@ -38,8 +39,9 @@ const form = new class {
 				});
 				elem.dispatchEvent(evt);
 			} else {
-				if (!elem.classList.contains('alert')) {
-					elem.classList.add('alert');
+				const warningSyst = elem.getElementsByClassName('warning')[0];
+				if (warningSyst.classList.contains('hidden')) {
+					warningSyst.classList.remove('hidden');
 				}
 			}
 		};
@@ -62,18 +64,44 @@ const form = new class {
 const record = new class {
 	constructor(elem) {
 		this.elem = elem;
+		this.elem.onclick = this._onClick.bind(this);
 	}
 	publish(data) {
 		if (typeof data === 'object') {
-			this.elem.innerHTML = `Long url: ${data.longUrl}, 
-			short url : <a href="http://localhost:3000/${data.shortUrl}"
-			target="_blank">
-			localhost:3000/${data.shortUrl}</a>`;
+			this.elem.innerHTML = `<div>Long url: ${data.longUrl}</div> 
+			<div>short url:<a href="http://localhost:3000/${data.shortUrl}"
+			target="_blank" id="shortUrl">
+			http://localhost:3000/${data.shortUrl}</a><div>
+			<div><button class="button">copy</button></div>`;
 		} else {
 			this.elem.innerHTML = data;
 		}
 
 	}
+	
+	_onClick(event) {
+		const target = event.target;
+		if (target.tagName !== 'BUTTON') {
+			return;
+		}
+		const shortUrl = document.getElementById('shortUrl');
+		const range = document.createRange();
+		range.selectNode(shortUrl);
+		window.getSelection().addRange(range);
+		try {
+			const successful = document.execCommand('copy');
+			if (successful) {
+				target.innerHTML = 'Copied!';
+			} else {
+				console.log("The command was unsiccessful");
+			}	
+		} catch(e) {
+				console.log(e);
+		}
+			
+		window.getSelection().removeAllRanges(); 
+	}
+	
 }(document.body.getElementsByClassName('result')[0]);
 
 document.body.addEventListener('success', (evt) => {
