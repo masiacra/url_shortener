@@ -67,11 +67,12 @@ const record = new class {
 		this.elem.onclick = this._onClick.bind(this);
 	}
 	publish(data) {
+		this.elem.classList.add('result');
 		if (typeof data === 'object') {
-			this.elem.innerHTML = `<div>Long url: ${data.longUrl}</div> 
-			<div>short url:<a href="http://localhost:3000/${data.shortUrl}"
+			this.elem.innerHTML = `<div>${data.longUrl}</div> 
+			<div><a href="http://localhost:3000/${data.shortUrl}"
 			target="_blank" id="shortUrl">
-			http://localhost:3000/${data.shortUrl}</a><div>
+			http://localhost:3000/${data.shortUrl}</a></div>
 			<div><button class="button">copy</button></div>`;
 		} else {
 			this.elem.innerHTML = data;
@@ -102,7 +103,7 @@ const record = new class {
 		window.getSelection().removeAllRanges(); 
 	}
 	
-}(document.body.getElementsByClassName('result')[0]);
+}(document.body.getElementsByClassName('record')[0]);
 
 document.body.addEventListener('success', (evt) => {
 	record.publish(evt.detail);
