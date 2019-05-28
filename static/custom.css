@@ -130,39 +130,62 @@ footer a {
 /* пользовательские стили  */
 
 /* стили для мобильных устройств и базовые стили для всех устройств  */
+html, body {
+	height: 100%;
+}
 body {
-  /* свойства тела страницы */
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(56,85,103);
+  display: flex;
+  flex-direction: column;
+}
+.wrapper {
   margin: 0 auto;
   max-width: 300px;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(255,222,213);
+
+  flex: 1;
 }
 h1 {
 	font-family: "Marker Felt", "Copperplate Gothic Light", serif;
-	color: #26273B;
+	color: white;
 	font-size: 26px;
 	text-align: center;
 }
 
 form {
-	border: 2px solid rgb(104,78,91);
 	border-radius: 10px;
 	padding: 10px;
 	font-size: 18px;
 	padding-bottom: 40px;
+	background-color: #E5E5E5;
 }
 
 .longUrl {
 	width: 280px;
-	
+	border: none;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #BFBFBF;
+	color: black;
+}
+
+.longUrl:focus {
+	background-color: white;
+	outline: none;
+	color: black;
 }
 
 .button {
 	padding: 0 10px;
-	color: rgb(93,102,131);
-	background-color: #E6E6FA;
+	color: #0000FF;
+	background-color: #ADD8E6;
 	border-radius: 5px;
 	box-shadow: 0 0 4px white;
+	padding: 5px 30px;
+}
+
+.button:focus {
+	outline: none;
 }
 
 .warning {
@@ -176,12 +199,13 @@ form {
 }
 
 .hidden {
-	opacity: 1;
+	opacity: 0;
 }
 
 .result {
+	background-color: #E5E5E5;
+	margin-top: 20px;
 	padding: 10px;
-	border: 2px solid rgb(104,78,91);
 	border-radius: 10px;
 	display: flex column-wrap;
 }
@@ -192,21 +216,59 @@ form {
 	text-align: center;
 }
 
+
+
+.footer {
+	background-color: rgb(38,39,59);
+	color: #E5E5E5;
+	margin-top: 20px;
+	text-align: center;
+	flex: 0;
+}
+
 /* только для устройств со средним размером экрана */
 @media (min-width: 481px) and (max-width:768px) {
-  body {
-    /* только для планшетов */
+  .wrapper {
+	max-width: 470px;
+  }
+  .longUrl {
+	width: 450px;
+	font-size: 16px;
+  }
+  .button {
+	font-size: 16px;
   }
 
 }
 
 /* только для устройств с крупным размером экрана */
 @media (min-width:769px) {
-  body {
-    /* только для компьютеров */
+  .wrapper {
+    max-width: 900px;
   }
-
+  .longUrl {
+	width: 750px;
+	font-size: 20px;
+  }
+  
+  .button {
+	font-size: 20px;
+  }
+  
+  .result {
+	display: flex;
+	flex-flow: row;
+  }
+  
+  .result div {
+	flex: 2;
+	padding: 10px 0;
+	text-align: center;
+  }
+  
 }
+
+
 
 
 
