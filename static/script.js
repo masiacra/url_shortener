@@ -70,9 +70,9 @@ const record = new class {
 		this.elem.classList.add('result');
 		if (typeof data === 'object') {
 			this.elem.innerHTML = `<div>${data.longUrl}</div> 
-			<div><a href="http://localhost:3000/${data.shortUrl}"
+			<div><a href="http://localhost:5000/${data.shortUrl}"
 			target="_blank" id="shortUrl">
-			http://localhost:3000/${data.shortUrl}</a></div>
+			http://localhost:5000/${data.shortUrl}</a></div>
 			<div><button class="button">copy</button></div>`;
 		} else {
 			this.elem.innerHTML = data;

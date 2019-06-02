@@ -11,7 +11,7 @@ const url = require('url');
 const postHandler = require('./lib/postHandler');
 const getHandler = require('./lib/getHandler');
 const staticFilesHandler = require('./lib/staticFilesHandler');
-
+const PORT = 5000;
 
 
 const server = http.createServer( (req, res) => {
@@ -33,7 +33,7 @@ const server = http.createServer( (req, res) => {
 	}
 });
 
-server.listen(3000, () => {
-	console.log('Сервер слушает на порту 3000');
+server.listen(PORT, () => {
+	console.log('Сервер слушает на порту ' + PORT);
 });
 
